@@ -1,3 +1,4 @@
+const path = require('path');
 const tsParser = require('@typescript-eslint/parser');
 const js = require('@eslint/js');
 const globals = require('globals');
@@ -27,13 +28,9 @@ module.exports = [
         globals: {
             ...globals.browser,
         },
-        parserOptions: {
-            project: path.join(__dirname, "tsconfig.eslint.json")
-        },
     },
     rules: {
         ...js.configs.recommended.rules,
-        ...ts.configs['stylistic-type-checked'].rules,
         // eslint/js rules
         'indent': [1, 4],
         'space-before-function-paren': 0,

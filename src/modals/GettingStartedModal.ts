@@ -29,7 +29,7 @@ export interface ManifestJson
 
 export default class ModalGettingStarted extends Modal
 {
-    // eslint-disable-next-line no-unused-vars
+     
     private resolve:        ( ( value: string ) => void )
     private plugin:         GistrPlugin
     private manifest:       ManifestJson

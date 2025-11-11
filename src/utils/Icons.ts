@@ -27,7 +27,7 @@ export function GetIconSize( )
     Remove Elements
 */
 
-export function RemoveElements( element: HTMLCollectionOf< Element > ): void
+export function RemoveElements( element: HTMLCollectionOf<Element> ): void
 {
     for ( let i = element.length; i >= 0; i-- )
     {
