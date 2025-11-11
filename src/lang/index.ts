@@ -5,6 +5,7 @@
 
 import { moment } from 'obsidian'
 import en from './locale/en'
+import ar from './locale/ar'
 
 /*
     Language entries
@@ -12,7 +13,8 @@ import en from './locale/en'
 
 const SetupLocale: Record<string, Partial<typeof en>> =
 {
-    en
+    en,
+    ar
 }
 
 /*
