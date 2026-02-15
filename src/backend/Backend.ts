@@ -143,7 +143,7 @@ css: |
             A single-lined URL for an embedded gist
         */
 
-        const pattern       = /(?<protocol>https?:\/\/)?(?<host>[^/]+\/)?((?<username>[\w-]+)\/)?(?<uuid>\w+)(#(?<filename>.+))?(&(?<theme>\w+))?/
+        const pattern       = /(?<protocol>https?:\/\/)?(?<host>[^/]+\/)?((?<username>[\w-]+)\/)?(?<uuid>\w+)(#(?<filename>[^&]+))?(&(?<theme>\w+))?/
         const find          = source.match( pattern ).groups
 
         /*
@@ -467,7 +467,7 @@ css: |
         const css_gh_bg_header_bg   = ( style.theme === 'dark' ? 'rgb( 35 36 41/var( --tw-bg-opacity ) )' : 'rgb( 238 239 241/var( --tw-bg-opacity ) )' )
         const css_gh_bg_header_bor  = ( style.theme === 'dark' ? '1px solid rgb( 54 56 64/var( --tw-border-opacity ) )' : 'rgb( 222 223 227/var( --tw-border-opacity ) )' )
         const css_gh_bg             = ( !bIsEmpty( style.background ) ? 'url(' + style.background + ')' : css_gh_bg_color )
-        const css_gh_tx_color       = ( style.theme === 'dark' ? this.settings.og_clr_tx_dark : this.settings.og_clr_tx_light )
+        const css_gh_tx_color       = ( style.theme === 'dark' ? this.settings.gh_clr_tx_dark : this.settings.gh_clr_tx_light )
         let css_gh_tx_color_user    = ( !bIsEmpty( style.color_text ) ? style.color_text : css_gh_tx_color )
         css_gh_tx_color_user        = css_gh_tx_color_user.replace( '#', '' )
         const css_gh_wrap           = ( this.settings.textwrap.toLowerCase( ) === 'enabled' ? 'wrap' : 'nowrap' )
@@ -597,7 +597,7 @@ css: |
             color:                  #${ css_gh_tx_color_user };
         }
 
-        body .gist .blob-num, body .gist .blob-code-inner,
+        body .gist .blob-num, body .gist .blob-code-inner
         {
             color:                  #${ css_gh_tx_color_user };
             opacity:                0.5;
