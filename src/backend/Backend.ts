@@ -141,6 +141,17 @@ css: |
         /*
             Method > Old
             A single-lined URL for an embedded gist
+            
+            Pattern captures:
+            - protocol: https:// or http:// (optional)
+            - host: domain/subdomain (e.g., gist.github.com/) (optional)
+            - username: GitHub username (optional)
+            - uuid: Gist ID (required)
+            - filename: Target file in gist, stops at & to allow theme parameter (optional)
+            - theme: Theme name (light/dark), prefixed with & (optional)
+            
+            Example: https://gist.github.com/User/abc123#myfile&dark
+            Captures: filename="myfile", theme="dark"
         */
 
         const pattern       = /(?<protocol>https?:\/\/)?(?<host>[^/]+\/)?((?<username>[\w-]+)\/)?(?<uuid>\w+)(#(?<filename>[^&]+))?(&(?<theme>\w+))?/
