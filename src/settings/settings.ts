@@ -53,7 +53,7 @@ export interface GistrSettings
     sy_save_list_datetime:      string | 'MM.DD.YYYY h:m:s a'
     sy_clr_lst_icon:            string | '757575E6'
     sy_save_duration:           number | 120
-    portals:                    Record< string, SaturynParams >
+    portals:                    Record<string, SaturynParams>
     uuid:                       string
 }
 
@@ -61,7 +61,7 @@ export interface GistrSettings
     Settings > Get
 */
 
-export const SettingsGet = async ( plugin: GistrPlugin ): Promise < GistrSettings > =>
+export const SettingsGet = async ( plugin: GistrPlugin ): Promise <GistrSettings> =>
 {
     await plugin.loadSettings( )
     return plugin.settings

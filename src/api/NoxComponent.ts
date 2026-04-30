@@ -93,7 +93,7 @@ export class NoxComponent extends Setting
         Dropdown
     */
 
-    public addNoxDropdown< T extends string = string >
+    public addNoxDropdown<T extends string = string>
     (
         cb:         ( _comp: DropdownComponent ) => unknown,
         onReset:    ( _comp: DropdownComponent ) => T
@@ -101,7 +101,7 @@ export class NoxComponent extends Setting
     {
         return super.addDropdown( ( comp ) =>
         {
-            this.addReset< string, DropdownComponent >( comp, onReset )
+            this.addReset<string, DropdownComponent>( comp, onReset )
             cb( comp )
         } )
     }
@@ -144,7 +144,7 @@ export class NoxComponent extends Setting
         Reset button functionality
     */
 
-    private addReset< T, V extends ValueComponent< T > >( comp: V, onReset: ( _comp: V ) => T ): V
+    private addReset<T, V extends ValueComponent<T>>( comp: V, onReset: ( _comp: V ) => T ): V
     {
         this.addExtraButton( ( btn ) =>
         {
