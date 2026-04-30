@@ -4,7 +4,7 @@
 
 <br />
 
-<p>A plugin for Obsidian.md which allows you to create, convert, and update notes from Obsidian to Github or Opengist. As well as integrate fully functional websites into your notes.</p>
+<p>A plugin for Obsidian.md which allows you to create, convert, and update notes from Obsidian to Github Gist. You can also embed and view gists from Github and OpenGist, as well as integrate fully functional websites into your notes.</p>
 
 <br />
 
@@ -66,8 +66,8 @@ The following is an outline of what Gistr can do for you:
 <br />
 
 **Supported Services**:
-- [Github Gists](https://gist.github.com)
-- [OpenGist Server](https://github.com/thomiceli/opengist)
+- [Github Gists](https://gist.github.com) - Full support for creating, updating, and embedding gists
+- [OpenGist Server](https://github.com/thomiceli/opengist) - Support for embedding and viewing gists only
 - _As of v1.6.x_: Any website
 
 <br />
@@ -81,10 +81,11 @@ The following is an outline of what Gistr can do for you:
     - [zoom](https://aetherinox.github.io/obsidian-gistr/usage/properties/#property-zoom): change the size of the website
     - [height](https://aetherinox.github.io/obsidian-gistr/usage/properties/#property-height): change the height of the website frame
     - [css](https://aetherinox.github.io/obsidian-gistr/usage/properties/#property-css): override existing CSS on the embedded website
-- Save notes from Obsidian as public or secret gists
+- Save notes from Obsidian as public or secret gists to Github
   - Manual and autosave settings available
   - Requires Github [Personal Access Token](https://github.com/settings/tokens?type=beta) (free).
     - [Click here to read setup instructions](https://aetherinox.github.io/obsidian-gistr/settings/github/)
+  - Note: Creating and updating gists is currently supported for Github only. OpenGist gists can be embedded and viewed.
 - Line numbering & syntax highlighting
 - Open embedded Github Gist or Opengist snippets from your notes in your device browser
 - Filter out gists that contain more than one file
@@ -142,7 +143,7 @@ This option displays gists in a browser-like environment. It allows you to sign 
 <br />
 
 ## Convert Note to Gist:
-This feature allows you to take notes in your Obsidian vault and upload them as gists to Github or Opengist.
+This feature allows you to take notes in your Obsidian vault and upload them as gists to Github.
 
 <br />
 
@@ -150,7 +151,7 @@ After writing your note in Obsidian, right-click anywhere in your note and selec
 
 <br />
 
-If you have already uploaded an Obsidian note as a gist, you can update the gist right from Obsidian. Either manually save, or allow the plugint o automatically update your gist every x minutes (can be changed in the plugin settings).
+If you have already uploaded an Obsidian note as a gist, you can update the gist right from Obsidian. Either manually save, or allow the plugin to automatically update your gist every x minutes (can be changed in the plugin settings).
 
 <br />
 

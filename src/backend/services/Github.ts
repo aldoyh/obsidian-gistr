@@ -448,9 +448,13 @@ export const GHGistGet = ( args: ArgsGet ) => async ( ) =>
                     const bNotFound     = error_msg.toLowerCase( ).includes( 'not found' )
 
                     if ( bNotFound )
+                    {
                         new Notice( lng( 'gist_not_found' ), notitime * 1000 )
-
-                    new Notice( lng( 'gist_upload_fail_api', output.errorMessage ), notitime * 1000 )
+                    }
+                    else
+                    {
+                        new Notice( lng( 'gist_upload_fail_api', output.errorMessage ), notitime * 1000 )
+                    }
 
                     return
                 }
