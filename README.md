@@ -325,6 +325,22 @@ Instructions for building various aspects of Gistr:
 For a detailed set of instructions on how to download this plugin's source files and compile your own version, check out the wiki link below:
 - [How to Build Gistr](https://aetherinox.github.io/obsidian-gistr/advanced/build/)
 
+Quick verification commands:
+
+```shell ignore
+npm install --legacy-peer-deps
+npm run lint
+npm run build
+node gistr.js generate
+npx --quiet env-cmd --no-override node gistr.js uuid
+npx --quiet env-cmd --no-override node gistr.js guid
+```
+
+Notes:
+- If `npm install` fails with `ERESOLVE`, use `npm install --legacy-peer-deps`.
+- `node gistr.js generate` creates `.env` with `VERSION`, `GUID`, and `UUID`.
+- The first `npx env-cmd` run may ask for install confirmation.
+
 <br />
 
 ## Documentation

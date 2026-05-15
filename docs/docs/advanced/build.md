@@ -64,6 +64,12 @@ Download the plugin dependencies by running:
 npm install
 ```
 
+If your install fails with an `ERESOLVE` peer dependency conflict (`eslint` / `@typescript-eslint`), run:
+
+```shell
+npm install --legacy-peer-deps
+```
+
 <br />
 
 Next, compile the source code for the plugin:
@@ -76,9 +82,8 @@ npm run dev
 
 Your console should output:
 ```shell
-rollup v2.79.1
-bundles src/main.ts → ...
-created  in 1.1s
+src/main.ts → ./...
+created ./ in 4.6s
 
 [2024-02-29 05:08:38] waiting for changes...
 ```
@@ -89,11 +94,11 @@ You are now ready to open the source code `.ts` files and make your own changes.
 
 <br />
 
-Each time the plugin is re-built, it will convert all of the source file files into a single `main.js` file, which will be placed inside the `dist` sub-folder of where you ran `npm` from.
+Each time the plugin is re-built, it will convert the source files into a single `main.js` file in the plugin root folder by default.
 
 <br />
 
-If you want to change the sub-folder ( `dist` ) used to output the compiled file, open the file `rollup.config.js` in notepad, kwrite, or some text editor.
+If you want to change where the compiled file is written, open `rollup.config.mjs` in your text editor.
 
 <br />
 
@@ -101,26 +106,33 @@ You will see the following code:
 
 ```js
 output: {
-  dir: 'dist/',             < ---------
+  dir: './',
   sourcemap: 'inline',
-  sourcemapExcludeSources: isProd,
+  sourcemapExcludeSources: bIsProd,
   format: 'cjs',
   exports: 'named',
-  banner,
 },
 ```
 
 <br />
 
-Find the line `dir` located in `output.dir` and change the folder where your compiled file will go. If you want it to compile the main.js file in the same plugin parent folder as the source folders, change `output.dir` to:
+Find the line `dir` in `output.dir` and change it to the output folder you want. For example, to output to a `dist` folder:
 
 ```js
-dir: './',
+dir: 'dist/',
 ```
 
 <br />
 
-If you do not change this from `dist\` to `./`, every time the plugin files are built, they will be placed inside the folder:
+If you keep the current default (`./`), every build writes the plugin bundle to:
+
+```
+x:\Path\To\Vault\.obsidian\plugins\gistr\main.js
+```
+
+<br />
+
+If you change `output.dir` to `dist/`, files will be placed inside:
 
 ```
 x:\Path\To\Vault\.obsidian\plugins\gistr\dist
@@ -132,7 +144,7 @@ This means that in order to test the plugin within Obsidian, you must copy the `
 
 <br />
 
-Save `rollup.config.js`, close your existing terminal / command prompt, and then re-run `npm run dev` for the changes to take affect.
+Save `rollup.config.mjs`, close your existing terminal / command prompt, and then re-run `npm run dev` for the changes to take effect.
 
 <br />
 
@@ -155,11 +167,31 @@ x:\Path\To\Vault\.obsidian\plugins\gistr\main.js
 
 <br />
 
-For the plugin to work properly, ensure you have the following three files, all in the same root plugin directory which is `x:\Path\To\Vault\.obsidian\plugins\gistr\`:
+For the plugin to work properly, ensure you have the following three files in the same root plugin directory `x:\Path\To\Vault\.obsidian\plugins\gistr\`:
 
 - main.js
-- style.css
+- styles.css
 - manifest.json
+
+<br />
+
+## Build verification checklist
+
+Use the following commands to verify build and environment metadata generation:
+
+```shell
+npm run lint
+npm run build
+node gistr.js
+node gistr.js generate
+npx --quiet env-cmd --no-override node gistr.js uuid
+npx --quiet env-cmd --no-override node gistr.js guid
+```
+
+Notes:
+- `node gistr.js generate` writes `.env` with `VERSION`, `GUID`, and `UUID`.
+- On first run, `npx env-cmd` may ask to install `env-cmd@11.x`; accept with `y`.
+- Current lint/build may print warnings, but the build still completes and produces `main.js`.
 
 <br />
 
